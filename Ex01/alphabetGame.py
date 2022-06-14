@@ -9,6 +9,7 @@ Num_Diff = Num_TarChar - Num_MisChar
 MaxReTime = 5
 
 def exal():
+    count = 0
     alphabetList = ["A","B","C","D","E","F","G","H","I","J","K","L","M",
                 "N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
@@ -25,15 +26,29 @@ def exal():
     if int(Num_ans) == int(Num_MisChar):
         print("正解です。それでは、具体的に欠損文字を１つずつ入力してください")
         while exal_num > 0:
-            input(f"{times1}つ目の文字を入力してください：")
-            exal_num -= 1
+            ans_alph = input(f"{times1}つ目の文字を入力してください：")
             times1 += 1
+
+            if ans_alph in exalList:
+                if ans_alph in misList:
+                    continue
+                else:
+                    count += 1
+
+            exal_num -= 1
+
+        if count == Num_MisChar:
+            print("正解です。おめでとうございます")
+
+        else:
+            print("不正解だよばかやろー")        
+
+
     else:
         print("不正解です。再チャレンジをしてください\n--------------------------------")
         
 
 exal()
 
-#未完成です
-
+#たぶん完成しました
 

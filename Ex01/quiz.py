@@ -10,9 +10,10 @@ def shutudai():
 
     x1 = random.randint(0,len(qs)-1)
     qX = qs[x1][0]
-    print("問題：")   
+    print("問題：")
     print(qX)
     return qs[x1]
+    
 
 def kaito():
     ans = input("回答を入力/")
@@ -23,11 +24,14 @@ def kaito():
         
     print("出直してこい")
 
-
 q_and_a = shutudai()
+timeS = datetime.datetime.now()
 kaito()
+timeE = datetime.datetime.now()
 
-#まだ終わってません
+print((timeE - timeS).seconds)
+
+#完成しました
 
 
 

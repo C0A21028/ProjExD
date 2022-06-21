@@ -2,6 +2,12 @@ from re import L
 from pip import main
 from cProfile import label
 import tkinter as tk
+import tkinter.messagebox as tkm
+
+def num_button_click(event):
+    btn = event.widget
+    txt = btn["text"]
+    tkm.showinfo(txt,f"[{txt}]が押されました")
 
 
 if __name__ == "__main__":
@@ -20,7 +26,7 @@ if __name__ == "__main__":
                         height = 2,
                         font = ("SourceHanSerif-Bold,30")
                         )
-        #btn.bind("<1>", button_click)
+        btn.bind("<1>",num_button_click)
         btn.grid(row = r, column = c)
         c += 1
         if (num-1)%3 == 0:

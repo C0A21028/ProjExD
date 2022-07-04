@@ -22,7 +22,7 @@ def exal():
     print(f"対象文字：\n{exalList}")
     print(f"表示文字：\n{misList}")
 
-    Num_ans = int(input("欠損文字はいくつあるでしょうか?："))
+    Num_ans = int(input("欠損文字はいくつあるでしょうか?:"))
     if int(Num_ans) == int(Num_MisChar):
         print("正解です。それでは、具体的に欠損文字を１つずつ入力してください")
         while exal_num > 0:

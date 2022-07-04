@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     entry = tk.Entry(width = 10,
                     justify = "right",
-                    font = ("OPTITimes-Roman, 40")
+                    font = ("OPTITimes-Roman, 34")
                     )  
     entry.grid(columnspan=10)
 

@@ -24,7 +24,7 @@ class Screen:
 
 class huda:
     def __init__(self,hand:list,label:list,hito):
-        self.sfc1=pg.image.load(f"./ex06/トランプ/{label[0]}/{hand[0]}_{label[0]}.png")
+        self.sfc1=pg.image.load(f"./Ex06/トランプ/{label[0]}/{hand[0]}_{label[0]}.png")
         self.sfc1=pg.transform.rotozoom(self.sfc1, 0, 0.15)
         self.rct1=self.sfc1.get_rect()
         self.y=0
@@ -36,11 +36,11 @@ class huda:
             l=1
         self.rct1.center=(725,self.y)
         if l==1:
-            self.sfc2=pg.image.load(f"./ex06/トランプ/card_back.png")
+            self.sfc2=pg.image.load(f"./Ex06/トランプ/card_back.png")
             self.sfc2=pg.transform.rotozoom(self.sfc2, 0, 0.27)
             
         else:
-            self.sfc2=pg.image.load(f"./ex06/トランプ/{label[1]}/{hand[1]}_{label[1]}.png")
+            self.sfc2=pg.image.load(f"./Ex06/トランプ/{label[1]}/{hand[1]}_{label[1]}.png")
             self.sfc2=pg.transform.rotozoom(self.sfc2, 0, 0.15)
         self.rct2=self.sfc2.get_rect()
         self.rct2.center=(875,self.y)
@@ -54,7 +54,7 @@ class huda:
 
 class tuika:
     def __init__(self,hand,label,x,count):
-        self.sfc=pg.image.load(f"./ex06/トランプ/{label[0]}/{hand[0]}_{label[0]}.png")
+        self.sfc=pg.image.load(f"./Ex06/トランプ/{label[0]}/{hand[0]}_{label[0]}.png")
         self.sfc=pg.transform.rotozoom(self.sfc, 0, 0.15)
         self.rct=self.sfc.get_rect()
         if count==1:
@@ -81,12 +81,12 @@ def main():
     total1=0
     total2=0
     clock=pg.time.Clock()
-    scr=Screen("black Jack",(1600,900),"./ex06/fig/haikei.jpg")
+    scr=Screen("black Jack",(1600,900),"./Ex06/fig/haikei.png")
     dealer_kigo,dealer_hand = deal()
     player_kigo,player_hand = deal()
     total1+=total(player_hand[0])+total(player_hand[1])
     total2+=total(dealer_hand[0])+total(dealer_hand[1])
-    ur=ura("ex06/トランプ/card_back.png")
+    ur=ura("Ex06/トランプ/card_back.png")
     print(player_kigo)
     kkt1=huda(player_hand,player_kigo,'P')
     kkt2=huda(dealer_hand,dealer_kigo,'D')

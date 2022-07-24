@@ -28,11 +28,12 @@ def finished():
     global px,py,mx,my
     if mx==px and my==py:
         label = tk.Label(root,
-            text="Game Clear!!",
-            font=("Times New Roman",80)
-            )
+                        text="Game Clear!! Xで終了",
+                        font=("Times New Roman",50)
+                        )
         label.pack()
-        maze_bg[py-1][px]=1
+        maze_bg[py-1][px] = 1
+
         maze_bg[py+1][px]=1
         maze_bg[py][px+1]=1
         maze_bg[py][px-1]=1
@@ -41,13 +42,13 @@ def finished():
         canvas.create_image(mx,my,image=img,tag="tori")
         if key=="x":
             sys.exit()
-
+    
 if __name__ == "__main__":
     root=tk.Tk()
     root.title("迷える子羊")
-    canvas=tk.Canvas(root,width=1500,height=900,bg="black")
+    canvas=tk.Canvas(root,width=1448,height=848,bg="black")
     canvas.pack()
-    maze_bg=maze.make_maze(30,18)
+    maze_bg = maze.make_maze(29,17)
     maze.show_maze(canvas,maze_bg)
     tori=tk.PhotoImage(file="ex03/fig/5.png")
     mx,my=1,1

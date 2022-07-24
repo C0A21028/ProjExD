@@ -1,110 +1,52 @@
-from re import L
-from turtle import right
-from pip import main
-from cProfile import label
+from ast import Num
 import tkinter as tk
 import tkinter.messagebox as tkm
+from turtle import right
 
-
-def num_button_click(event):
-    btn = event.widget
-    txt = btn["text"]
-    entry.insert(tk.END, f"{txt}")
-    tkm.showinfo(txt,f"[{txt}]が押されました")
-
-#def plus_button_click(event):
-#    plus_button = event.widget
-    
-
+def button_click(event):
+    btn=event.widget
+    num=btn["text"]
+    if num=="=":
+        res=eval(entry1.get())
+        entry1.delete(0,tk.END)
+        entry.delete(0,tk.END)
+        entry.insert(tk.END,res)
+    elif num=="C":
+        entry.delete(0,tk.END)
+        entry1.delete(0,tk.END)
+    elif num=="上C":
+        entry1.delete(0,tk.END)
+    elif num=="下C":
+        entry.delete(0,tk.END)
+    elif num=="×":
+        num="*"
+        entry1.insert(tk.END,num)
+    elif num=="+":
+        num="+"
+        entry1.insert(tk.END,num)
+    else:
+        entry1.insert(tk.END,num)
 
 if __name__ == "__main__":
-    insnum = 0
-    root = tk.Tk()
-    root.title("calc")
-    #root.geometry("310x330")
 
-    entry = tk.Entry(width = 10,
-                    justify = "right",
-                    font = ("OPTITimes-Roman, 34")
-                    )  
-    entry.grid(columnspan=10)
+    root=tk.Tk()
+    root.title("電卓")
 
+    entry1=tk.Entry(root,justify="right",width=20,font=("Times New Roman",20))
+    entry1.grid(row=0,column=1,columnspan=10)
 
-
-    r, c = 1, 0 #r:行番号 c:列番号
-    for num in range(9, -1, -1):
-        btn = tk.Button(root,
-                        text = f"{num}",
-                        width = 4,
-                        height = 2,
-                        font = ("OPTITimes-Roman,30")
-                        )
-
-        btn.bind("<1>",num_button_click)
-
-        btn.grid(row = r,
-                column = c)
-        c += 1
-        if (num-1)%3 == 0:
-            r += 1
-            c = 0
-
-    plus_button = tk.Button(root,
-                            text = "+",
-                            width = 4,
-                            height = 2,
-                            font = ("OPTITimes-Roman,30")
-                            )
-    plus_button.grid(row=4,
-                    column=3
-                    )
-
-    minus_button = tk.Button(root,
-                            text = "-",
-                            width = 4,
-                            height = 2,
-                            font = ("OPTITimes-Roman,30")
-                            )
-    minus_button.grid(row=3,
-                    column=3
-                    )
-    
-    times_button = tk.Button(root,
-                            text = "×",
-                            width = 4,
-                            height = 2,
-                            font = ("OPTITimes-Roman,30")
-                            )
-    times_button.grid(row=1,
-                    column=3
-                    )
-
-    divis_button = tk.Button(root,
-                            text = "÷",
-                            width = 4,
-                            height = 2,
-                            font = ("OPTITimes-Roman,30")
-                            )
-    divis_button.grid(row=2,
-                    column=3
-                    )
-           
-    eq_button = tk.Button(root,
-                            text = "=",
-                            width = 4,
-                            height = 2,
-                            font = ("OPTITimes-Roman,30")
-                            )
-    eq_button.grid(row=4,
-                    column=2
-                    )
-    dot_button = tk.Button(root,
-                            text=".",
-                            width=4,
-                            height=2,
-                            font = ("OPTITimes-Roman,30"),
-                            )
-    dot_button.grid(row = 4,column= 1)
+    entry=tk.Entry(root,justify="right",width=10,font=("Times New Roman",40))
+    entry.grid(row=1,column=1,columnspan=10)
 
     
+    for l,i in enumerate(["C","上C","下C","",9,8,7,"+",6,5,4,"-",3,2,1,"×",0,"="]):
+        button=tk.Button(root,text=f"{i}",
+                        font=("Helvetica",30),
+                        width=4,height=1,
+                        command=button_click)
+        button.bind("<1>",button_click)
+        k=l%4+1
+        j=l//4+2
+        button.grid(row=j,column=k)
+
     root.mainloop()

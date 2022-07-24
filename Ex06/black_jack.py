@@ -81,7 +81,7 @@ def main():
     total1=0
     total2=0
     clock=pg.time.Clock()
-    scr=Screen("black Jack",(1600,900),"./ex06/トランプ/CC.jpg!d")
+    scr=Screen("black Jack",(1600,900),"./ex06/fig/haikei.jpg")
     dealer_kigo,dealer_hand = deal()
     player_kigo,player_hand = deal()
     total1+=total(player_hand[0])+total(player_hand[1])

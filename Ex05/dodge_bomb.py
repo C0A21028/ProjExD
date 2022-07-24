@@ -163,7 +163,6 @@ def main():
             for i in beams:
                 i.update(scr)
             
-        #練習6
         #追加機能
         #screen_sfc.blit(kkimg_sfc,kkimg_rct)
         #for i in range(6):
@@ -188,10 +187,15 @@ def main():
         #            root.withdraw()
         #            pg.display.update()
         #            tkm.showinfo("なかなかやるじゃん！","Game Clear")
+
         for j in bmimg_sfc:
             j.update(scr)
             if kkt.rct.colliderect(j.rct):
+                root = tk.Tk()
+                root.withdraw()
+                tkm.showinfo("ドンマイ","ゲームオーバー")
                 return
+
             for k in beams:
                 if k!=None and k.rct.colliderect(j.rct):
                     beams.remove(k)
@@ -200,6 +204,9 @@ def main():
         if len(beams)>=10:
             beams.pop(0)
         if len(bmimg_sfc)<=0:
+            root = tk.Tk()
+            root.withdraw()
+            tkm.showinfo("おめでとう","ゲームクリア")
             return
         pg.display.update()
         clock.tick(1000)

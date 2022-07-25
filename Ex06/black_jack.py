@@ -12,6 +12,21 @@ jisyo = {"CL":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
         "SP":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
         "DI":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
 
+def bgm():
+    bgm_file = "./Ex06/fig/bgm.wav"
+    sounds = pg.mixer.Sound(bgm_file)
+    channel = sounds.play(loops = -1)
+    bgm_time = sounds.get_length()
+
+def se_card_open():
+    bgm_file = "./Ex06/fig/card_open.mp3"
+    sounds = pg.mixer.Sound(bgm_file)
+    channel = sounds.play(1)
+    bgm_time = sounds.get_length()
+    
+    
+
+
 class Screen:
     def __init__(self,title,wh,image):
         pg.display.set_caption(title)
@@ -78,6 +93,7 @@ class ura:
         scr.sfc.blit(self.sfc,self.rct)
 
 def main():
+    bgm()
     total1=0
     total2=0
     clock=pg.time.Clock()
@@ -104,14 +120,17 @@ def main():
             if event.type==pg.QUIT:
                 return
             if event.type==pg.KEYDOWN and event.key==pg.K_SPACE:
+                se_card_open()
                 m=1
             elif event.type==pg.KEYDOWN and event.key==pg.K_1:
+                se_card_open()
                 pk,ph=deal2()
                 com+=1
                 count=com
                 total1+=total(ph[0])
                 if count>=2:
                     count=2
+                    
         if m==1:
             kkt1.update(scr)
             kkt2.update(scr)

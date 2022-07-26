@@ -17,6 +17,7 @@ def bgm():
     sounds = pg.mixer.Sound(bgm_file)
     channel = sounds.play(loops = -1)
     bgm_time = sounds.get_length()
+    pg.mixer.music.set_volume(0.6)
 
 def se_card_open():
     bgm_file = "./Ex06/fig/card_open.mp3"

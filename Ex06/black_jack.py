@@ -15,15 +15,14 @@ jisyo = {"CL":[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
 def bgm():
     bgm_file = "./Ex06/fig/bgm.wav"
     sounds = pg.mixer.Sound(bgm_file)
-    channel = sounds.play(loops = -1)
-    bgm_time = sounds.get_length()
+    sounds.play(loops = -1)
     pg.mixer.music.set_volume(0.6)
 
 def se_card_open():
     bgm_file = "./Ex06/fig/card_open.mp3"
     sounds = pg.mixer.Sound(bgm_file)
-    channel = sounds.play(1)
-    bgm_time = sounds.get_length()
+    sounds.play(1)
+
     
     
 
